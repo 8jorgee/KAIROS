@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Aplicacion</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            header {
+                background-color: #f2f2f2;
+                padding: 10px;
+                text-align: center;
+            }
+            header a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href={% url 'home' %}>Inicio</a>
+            <a href={% url 'registros' %}>Registros</a>
+            <a href={% url 'historial' %}>Historial</a>
+            <a href={% url 'PLC' %}>PLC</a>
+            <a href={% url 'materia_prima' %}>materia prima</a>
+            <a href={% url 'experimento' %}>experimento</a>
+            <a href={% url 'confrontar' %}>Confrontar experimentos</a>
+
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'exit' %}">Salir</a>
+            {% else %}
+                <a href="{% url 'login' %}">Ingresar</a>
+            {% endif %}
+        </header>
+        
+        {% block content %} {% endblock %}
+
+    </body>
+</html>
